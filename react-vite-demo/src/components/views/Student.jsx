@@ -24,7 +24,7 @@ function Student() {
 
     };
 
-    const loggedInUserGroup = 10;
+    const loggedInUserGroup = 1;
     const apiURL = "https://softwarehub.uk/unibase/api";
     const myGroupEndpoint = `${apiURL}/Users/groups/${loggedInUserGroup}`;
 
