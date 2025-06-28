@@ -1,6 +1,6 @@
 import {useState, useEffect } from "react";
 import { CardContainer} from "../UI/Card.jsx";
-import "./Student.scss";
+import UserCard from "../entity/user/UserCard.jsx";
 
 
 function Student() {
@@ -59,7 +59,7 @@ function Student() {
                 ) : students.length === 0 ?(
                     <p>No Records Found.</p>
                 ) : (
-                    students.map((student) => <UserCard user={students} key = {student.UserEmail}/>)
+                    students.map((student) => <UserCard user={student} key = {student.UserID}/>)
                 )}
             </CardContainer>
             <button onClick={()=> handleAdd(newStudent)}>Add Student</button>

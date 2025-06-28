@@ -5,7 +5,7 @@ import './UserCard.scss';
 function UserCard({user}){
 
     return(
-        <div className="userCard" key = {user.UserEmail}>
+        <div className="userCard">
             <Card>
                 <p key="KNumber:{student.UserEmail}">{user.UserEmail.substring(0,8)}</p>
                 <p key="Name:{student.UserFirstname}">{`${user.UserFirstname} ${user.UserLastname}`}</p>
@@ -19,6 +19,7 @@ UserCard.PropTypes = {
     user: PropTypes.shape({
         UserEmail: PropTypes.string.isRequired,
         UserFirstname: PropTypes.string.isRequired,
+        UserLastname: PropTypes.string.isRequired,
         UserImageURL: PropTypes.string.isRequired,
 
     })
