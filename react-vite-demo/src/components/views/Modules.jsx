@@ -1,7 +1,9 @@
-import { CardContainer} from "../UI/Card.jsx";
 import {useState, useEffect } from "react";
+import Action from "../UI/Actions.jsx"; 
+import ModuleForm from "../entity/module/ModduleForm.jsx";
+import { CardContainer} from "../UI/Card.jsx";
 import ModuleCard from "../entity/module/ModuleCard.jsx";
-import "./Modules.scss";
+
 
 function Modules() {
     
@@ -12,6 +14,7 @@ function Modules() {
 
     // State -------------------------------------------
     const [ modules, setModules ] = useState(null);
+    const [showForm, setShowForm] = useState (false);
         
     const apiGet = async (endpoint) => {
         const response = await fetch(endpoint);
@@ -27,13 +30,20 @@ function Modules() {
         
 
     // Handlers ----------------------------------------------
-
+    const handleAdd = () => setShowForm(true);
+    const handleCancel = () => setShowForm(false);
 
     // View -----------------------------------------
         
     return(
         <>
         <h1>Modules</h1>
+
+            <Action.Tray>
+                {!showForm && <Action.Add showText buttonText="Add New Module" onClick={handleAdd}/>}
+            </Action.Tray>
+
+            {showForm && <ModuleForm onCancel={handleCancel}/>}
 
             {!modules ? (
                 <p> Loading Recirds . . . </p>
@@ -44,7 +54,7 @@ function Modules() {
                     {modules.map((module) => <ModuleCard module={module} key={module.ModuleCode}/>)}
                 </CardContainer>                     
             )}
-            <button> Add Module</button>
+      
         </>   
     );
 }
