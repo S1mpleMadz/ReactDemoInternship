@@ -1,5 +1,5 @@
 import {useState, useEffect } from "react";
-import { CardContainer, Card} from "../UI/Card.jsx";
+import { CardContainer} from "../UI/Card.jsx";
 import "./Student.scss";
 
 
@@ -52,34 +52,17 @@ function Student() {
     return(
         <>
             <h1>Students</h1>
-           
 
-            {
-                !students
-                ? (<p> Loading Records . . . </p>)
-                :(
-                <>
-                    <CardContainer>
-                        {
-                            students.map((student) => {
-                            return(
-                                <div className="studentCard" key = {student.UserEmail}>
-                                <Card>
-                                    <p key="KNumber:{student.UserEmail}">{student.UserEmail.substring(0,8)}</p>
-                                    <p key="Name:{student.UserFirstname}">{`${student.UserFirstname} ${student.UserLastname}`}</p>
-                                    <img src={student.UserImageURL} />
-                                </Card>
-                                </div>
-                            );
-                            })
-                        }
-                    </CardContainer>
-                    
-                    
-                    <button onClick={() => handleAdd(newStudent)}>Add Student</button>
-                </>
-                )
-            }
+            <CardContainer>
+                {!students ? (
+                    <p>Loading Records . . .</p>
+                ) : students.length === 0 ?(
+                    <p>No Records Found.</p>
+                ) : (
+                    students.map((student) => <UserCard user={students} key = {student.UserEmail}/>)
+                )}
+            </CardContainer>
+            <button onClick={()=> handleAdd(newStudent)}>Add Student</button>
         </>
     );
 }

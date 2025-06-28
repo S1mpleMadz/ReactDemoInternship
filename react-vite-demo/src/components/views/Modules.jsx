@@ -1,5 +1,6 @@
-import { CardContainer, Card} from "../UI/Card.jsx";
+import { CardContainer} from "../UI/Card.jsx";
 import {useState, useEffect } from "react";
+import ModuleCard from "../entity/module/ModuleCard.jsx";
 import "./Modules.scss";
 
 function Modules() {
@@ -40,18 +41,8 @@ function Modules() {
                 <p>No records found</p>
             ) :(     
                 <CardContainer>
-                    {modules.map((module) => (
-                        <div className="moduleCard" key={module.ModuleCode}>
-                            <Card>
-                                <p key="Code:{module.ModuleCode}">{module.ModuleCode}</p>
-                                <p key="Name:{module.ModuleName}">{module.ModuleName}</p>
-                                <img src={module.ModuleImageURL} />
-                            </Card>
-                        </div>
-                     
-                    ))}
-                </CardContainer>   
-                    
+                    {modules.map((module) => <ModuleCard module={module} key={module.ModuleCode}/>)}
+                </CardContainer>                     
             )}
             <button> Add Module</button>
         </>   
