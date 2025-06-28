@@ -4,62 +4,56 @@ import "./Modules.scss";
 
 function Modules() {
     
-    const newModule = {};
-
+    // Initialisation --------------------------
+    const loggedInUserGroup = 820;
     const apiURL = "https://softwarehub.uk/unibase/api";
-    const myModuleEndpoint = `${apiURL}/modules`;
+    const myModuleEndpoint = `${apiURL}/modules/leader/${loggedInUserGroup}`;
 
+    // State -------------------------------------------
     const [ modules, setModules ] = useState(null);
-
         
     const apiGet = async (endpoint) => {
         const response = await fetch(endpoint);
         const result = await response.json();
 
-        setModules(result)
+        setModules(result);
     }
 
-    useEffect(() => {apiGet(myModuleEndpoint)}, [myModuleEndpoint]);
+    useEffect(() => {
+        apiGet(myModuleEndpoint);
+    }, [myModuleEndpoint]);
         
         
 
-    const handleAdd = (module) => {
-        module.ModuleID = Math.floor(10000 * Math.random());
-        setModules([...modules,newModule]);
-    };
+    // Handlers ----------------------------------------------
 
+
+    // View -----------------------------------------
         
     return(
         <>
         <h1>Modules</h1>
 
-            {
-                !modules
-                ? (<p> Loading Recirds . . . </p>)
-                :(
-                <>
-
-                    <CardContainer>
-                        {
-                            modules.map((module) => {
-                                return(
-                                <div className="moduleCard" key={module.ModuleCode}>
-                                    <Card>
-                                    <p key="Code:{module.ModuleCode}">{module.ModuleCode}</p>
-                                    <p key="Name:{module.ModuleName}">{module.ModuleName}</p>
-                                    <img src={module.ModuleImageURL} />
-                                    </Card>
-                                </div>
-                                );
-                            })
-                        }
-                    </CardContainer>   
+            {!modules ? (
+                <p> Loading Recirds . . . </p>
+            ):  modules.length === 0 ? (
+                <p>No records found</p>
+            ) :(     
+                <CardContainer>
+                    {modules.map((module) => (
+                        <div className="moduleCard" key={module.ModuleCode}>
+                            <Card>
+                                <p key="Code:{module.ModuleCode}">{module.ModuleCode}</p>
+                                <p key="Name:{module.ModuleName}">{module.ModuleName}</p>
+                                <img src={module.ModuleImageURL} />
+                            </Card>
+                        </div>
+                     
+                    ))}
+                </CardContainer>   
                     
-                    <button onClick={() => handleAdd(newModule)}>Add Module</button>
-                </>
-                )
-
-            }
+            )}
+            <button> Add Module</button>
         </>   
     );
 }
