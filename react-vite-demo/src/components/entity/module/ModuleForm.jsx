@@ -14,8 +14,8 @@ function ModuleForm({onCancel}) {
                 <label htmlFor="">Module Name</label>
                 <input type ="text" name="ModuleName" value=""/>
             </div>
+ 
        
-
             <Action.Tray>
                 <Action.Cancel showText buttonText="Cancel Form" onClick={onCancel}/>
             </Action.Tray>
