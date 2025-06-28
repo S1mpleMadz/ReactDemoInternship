@@ -6,8 +6,14 @@ import "./ModuleForm.scss";
 function ModuleForm({onCancel}) {
 
     return (
-        <div className="moduleForm"> 
-            <p>This is the form</p>
+        <div className="moduleForm">
+
+            
+
+            <div className="FormTray">
+                <label htmlFor="">Module Name</label>
+                <input type ="text" name="ModuleName" value=""/>
+            </div>
        
 
             <Action.Tray>

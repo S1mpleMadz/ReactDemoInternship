@@ -1,6 +1,6 @@
 import {useState, useEffect } from "react";
 import Action from "../UI/Actions.jsx"; 
-import ModuleForm from "../entity/module/ModduleForm.jsx";
+import ModuleForm from "../entity/module/ModuleForm.jsx";
 import { CardContainer} from "../UI/Card.jsx";
 import ModuleCard from "../entity/module/ModuleCard.jsx";
 

@@ -1,6 +1,24 @@
+$BorderGrey : LightGrey;
+
 div.moduleForm{
-    border: 1pm solid lightgray;
-    border-radius: 3px;
-    padding: 20px 20px;
-    margin: 0 0 20px 0;
+    width: 100%;
+    border-radius: 5px;
+    padding: 20px;
+    border: 1px solid $BorderGrey;
+    display: flex;
+    flex-direction: column;
+    gap: 20p;x
+
+    div.FormTray{
+        width:100%;
+
+        label,
+        input,
+        select{
+            display: block;
+            width: 100%;
+        }
+
+    }
+
 }
