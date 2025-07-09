@@ -3,6 +3,7 @@ import Action from "../UI/Actions.jsx";
 import ModuleForm from "../entity/module/ModuleForm.jsx";
 import { CardContainer} from "../UI/Card.jsx";
 import ModuleCard from "../entity/module/ModuleCard.jsx";
+import "../entity/module/ModuleForm.scss";
 
 
 function Modules() {
